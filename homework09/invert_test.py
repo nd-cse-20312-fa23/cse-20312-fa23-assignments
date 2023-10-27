@@ -48,6 +48,8 @@ class InvertTests(unittest.TestCase):
         for original, inverted in self.Cases:
             original = tree_read(original)
             inverted = tree_read(inverted)
+            self.assertTrue(original)
+            self.assertTrue(inverted)
             self.assertEqual(invert.tree_invert(original), inverted)
             InvertTests.Points += 0.25
 
