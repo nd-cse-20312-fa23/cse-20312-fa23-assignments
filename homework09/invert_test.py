@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import io
 import doctest
 import mypy.api
@@ -61,7 +62,7 @@ class InvertTests(unittest.TestCase):
             case_output.append(', '.join(map(str, o)))
             case_output.append(', '.join(map(str, i)))
 
-        for line, case_output in zip(lines, case_output):
+        for line, case_output in itertools.zip_longest(lines, case_output):
             self.assertEqual(line, case_output)
             InvertTests.Points += 0.125
 

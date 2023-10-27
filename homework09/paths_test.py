@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import io
 import doctest
 import mypy.api
@@ -47,7 +48,7 @@ class PathsTests(unittest.TestCase):
     def test_02_tree_paths(self):
         for array, results in self.Cases:
             root = tree_read(array)
-            for expected, generated in zip(results, paths.tree_paths(root)):
+            for expected, generated in itertools.zip_longest(results, paths.tree_paths(root)):
                 self.assertEqual(expected, generated)
                 PathsTests.Points += 0.125
 
@@ -62,7 +63,7 @@ class PathsTests(unittest.TestCase):
             case_output.extend([
                 ', '.join(map(str, r)) for r in results
             ])
-        for line, case_output in zip(lines, case_output):
+        for line, case_output in itertools.zip_longest(lines, case_output):
             self.assertEqual(line, case_output)
             PathsTests.Points += 0.125
 
