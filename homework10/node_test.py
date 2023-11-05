@@ -44,7 +44,7 @@ class NodeTests(unittest.TestCase):
         self.assertFalse(Node('a', 1) < Node('b', 0))
         NodeTests.Points += 0.25
 
-    def test_03_comparison(self):
+    def test_03_walk(self):
         cases = [
             (
                 Node('', 2, Node('A', 1), Node('B', 1)),
