@@ -17,6 +17,7 @@ class TreeTests(unittest.TestCase):
 
     Tree1  = Node(value=1, left=Node(value=2, left=None, right=None), right=Node(value=3, left=None, right=None))
     Tree2  = Node(value=1, left=Node(value=2, left=Node(value=4, left=None, right=None), right=None), right=Node(value=3, left=None, right=Node(value=6, left=None, right=None)))
+    Tree3  = Node(1, left=Node(2), right=Node(3, Node(6), Node(7)))
 
     @classmethod
     def setupClass(cls):
@@ -43,12 +44,17 @@ class TreeTests(unittest.TestCase):
         root = tree_read([1, 2, 3])
         self.assertTrue(isinstance(root, Node))
         self.assertEqual(root, self.Tree1)
-        TreeTests.Points += 0.25
+        TreeTests.Points += 0.10
 
         root = tree_read([1, 2, 3, 4, 0, 0, 6])
         self.assertTrue(isinstance(root, Node))
         self.assertEqual(root, self.Tree2)
-        TreeTests.Points += 0.25
+        TreeTests.Points += 0.20
+        
+        root = tree_read([1, 2, 3, 0, 0, 6, 7])
+        self.assertTrue(isinstance(root, Node))
+        self.assertEqual(root, self.Tree3)
+        TreeTests.Points += 0.20
 
     def test_03_tree_values(self):
         values = tree_values(self.Tree1)
@@ -65,11 +71,16 @@ class TreeTests(unittest.TestCase):
         array = tree_array(self.Tree1)
         self.assertTrue(isinstance(array, list))
         self.assertEqual(array, [1, 2, 3])
-        TreeTests.Points += 0.5
+        TreeTests.Points += 0.25
 
         array = tree_array(self.Tree2)
         self.assertTrue(isinstance(array, list))
         self.assertEqual(array, [1, 2, 3, 4, 0, 0, 6])
+        TreeTests.Points += 0.25
+        
+        array = tree_array(self.Tree3)
+        self.assertTrue(isinstance(array, list))
+        self.assertEqual(array, [1, 2, 3, 0, 0, 6, 7])
         TreeTests.Points += 0.5
 
 # Main Execution
