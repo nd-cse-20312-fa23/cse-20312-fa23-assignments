@@ -79,7 +79,7 @@ class TreapTests(unittest.TestCase):
 
             return is_max_heap(node.left) and is_max_heap(node.right)
 
-        strings = ['dontspeak', 'nodoubt', 'tragic']
+        strings = ['dontspeak', 'nodoubt', 'tragickingdom']
         for string in strings:
             t = Treap()
             for key in string:
