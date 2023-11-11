@@ -5,6 +5,7 @@ import mypy.api
 import unittest
 
 from itertools import zip_longest
+from math      import isclose
 
 import bst
 from bst import Node, BST
@@ -27,7 +28,7 @@ class BSTTests(unittest.TestCase):
     def tearDownClass(cls):
         print()
         print(f'   Score {cls.Points:.2f} / {cls.Total:.2f}')
-        print(f'  Status {"Success" if cls.Points >= cls.Total else "Failure"}')
+        print(f'  Status {"Success" if isclose(cls.Points, cls.Total) else "Failure"}')
 
     def test_00_doctest(self):
         failures, tests = doctest.testmod(bst, verbose=False)
@@ -106,7 +107,8 @@ class BSTTests(unittest.TestCase):
             t = BST()
             for key in string:
                 value  = ord(key) - ord('A') + 1
-                t.root = t._insert(t.root, key, value)
+                t.root = t._insert(t.root, key, 0)          # Insert
+                t.root = t._insert(t.root, key, value)      # Update
             self.assertEqual(t.root, tree)
             BSTTests.Points += 0.25
 
@@ -115,7 +117,8 @@ class BSTTests(unittest.TestCase):
             t = BST()
             for key in string:
                 value  = ord(key) - ord('A') + 1
-                t[key] = value
+                t[key] = 0                                  # Insert
+                t[key] = value                              # Update
             self.assertEqual(t.root, tree)
             BSTTests.Points += 0.25
 
