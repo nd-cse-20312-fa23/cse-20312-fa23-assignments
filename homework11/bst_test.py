@@ -129,7 +129,7 @@ class BSTTests(unittest.TestCase):
                 self.assertEqual(a, b)
             BSTTests.Points += 0.125
 
-    def test_10_walk(self):
+    def test_10_items(self):
         for string, tree in (('BCDEFGH', self.Tree1), ('BCDEFGH', self.Tree2)):
             t = BST(tree)
             for a, b in zip_longest(t.items(), [(k, ord(k) - ord('A') + 1) for k in string]):
