@@ -52,7 +52,7 @@ class AnagramsTests(unittest.TestCase):
             self.assertTrue(counts1.items(), sorted(counts2.items()))
             AnagramsTests.Points += 0.125
 
-    def test_03_is_anagrams(self):
+    def test_03_is_anagram(self):
         for word1, word2, expected in self.Cases:
             self.assertEqual(anagrams.is_anagram(word1, word2), expected)
             AnagramsTests.Points += 0.1
