@@ -70,9 +70,9 @@ class CenterStarTests(unittest.TestCase):
             f'Vertex {v} is the center' if v else 'There is no center' for v in centers
         )
 
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as output:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as outputs:
             center_star.main(stream)
-            for output, expected in zip_longest(output.getvalue().splitlines(), expecteds):
+            for output, expected in zip_longest(outputs.getvalue().splitlines(), expecteds):
                 self.assertEqual(output, expected)
                 CenterStarTests.Points += 1/len(centers)
 

@@ -99,9 +99,9 @@ class RedditGroupsTests(unittest.TestCase):
             for origin, group in walks:
                 expecteds.append(f'{" ".join(map(str, group))}')
 
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as output:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as outputs:
             reddit_groups.main(stream)
-            for output, expected in zip_longest(output.getvalue().splitlines(), expecteds):
+            for output, expected in zip_longest(outputs.getvalue().splitlines(), expecteds):
                 self.assertEqual(output, expected)
                 RedditGroupsTests.Points += 1/len(expecteds)
 
