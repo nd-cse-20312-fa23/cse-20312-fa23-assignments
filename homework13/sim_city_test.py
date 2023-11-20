@@ -32,8 +32,6 @@ class SimCityTests(unittest.TestCase):
         (1.1, 0.3), (2.4, 5.2), (0.9, 9.0), (1.5, 5.1), (6.9, 9.6),
     ]
 
-    #Graph1 = {v: p for v, p in enumerate(Input1)}
-
     @classmethod
     def setupClass(cls):
         cls.Points = 0
